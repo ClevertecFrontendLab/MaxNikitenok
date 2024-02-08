@@ -19,7 +19,7 @@
 
 .trigger-rectangle {
     position: absolute;
-    top: calc(50vh - 33px);
+    top: calc(50vh - 2px);
     right: -20px;
     width: 0;
     height: 66px;
@@ -34,7 +34,30 @@
 
 .logo {
     height: 34px;
-    margin: 48px 0 58px 30px;
-    background: url(../../img/Logo_full.svg) no-repeat;
-    background-size: 133px;
+    margin: 44px 0 57px 29px;
+    background: url(../../img/LogoFull.svg) no-repeat;
+    background-size: 132px;
+    transition: all 0.3s;
+}
+
+.logo-min {
+    height: 34px;
+    margin: 49px 0 53px 18px;
+    background: url(../../img/LogoMin.svg) no-repeat;
+    background-size: 28px;
+    transition: all 0.3s;
+}
+
+.menu {
+    height: 234px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: none;
+    background: #fff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    color: #262626;
 }
