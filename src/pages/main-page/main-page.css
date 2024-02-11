@@ -19,7 +19,7 @@
 
 .trigger-rectangle {
     position: absolute;
-    top: calc(50vh - 2px);
+    top: calc(50vh - 33px);
     right: -20px;
     width: 0;
     height: 66px;
@@ -60,4 +60,133 @@
     font-size: 14px;
     line-height: 130%;
     color: #262626;
+}
+
+.header-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.settings-button-container {
+    padding: 7px 21px 0 0;
+    line-height: 0;
+}
+
+.settings-button-container Button {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+    color: var(--character-light-title-85);
+}
+
+.settings-button-container .ant-btn > .anticon + span {
+    margin-left: 11px;
+}
+
+.description,
+.sub-title {
+    max-width: 752px;
+    padding: 24px;
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+    background: var(--character-light-primary-inverse);
+    font-family: var(--font-family);
+}
+
+.description {
+    margin-bottom: 24px;
+}
+
+.sub-title {
+    margin-bottom: 16px;
+}
+
+.cards {
+    max-width: 752px;
+    display: flex;
+    gap: 16px;
+    text-align: center;
+}
+
+.cards .ant-card {
+    flex: 1;
+}
+
+.cards .ant-card-head-title {
+    padding: 0;
+    white-space: wrap;
+}
+
+.cards .ant-card-head {
+    padding: 12px 24px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: var(--character-light-title-85);
+}
+
+.cards .ant-card-body {
+    padding: 18px 6px 18px 0px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    text-align: center;
+    color: var(--primary-light-6);
+}
+
+.cards .ant-card-body span {
+    margin-left: 8px;
+}
+
+Footer Button.see-reviews {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    text-align: center;
+    color: var(--primary-light-6);
+    margin-bottom: 4px;
+}
+
+Footer.ant-layout-footer {
+    display: flex;
+    padding: 0 24px 42px 24px;
+    justify-content: space-between;
+    align-items: end;
+}
+
+Footer .ant-card-body {
+    padding: 0;
+}
+
+Footer .ant-card-meta-title {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: var(--primary-light-6);
+}
+
+Footer .ant-card-meta-description {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    color: var(--character-light-secondary-45);
+}
+
+Footer .ant-card-meta-detail {
+    padding: 16px 24px;
+}
+
+Footer > Meta {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+Footer .actions {
+    display: flex;
+    border-top: 1px solid #f0f0f0;
+    padding: 12px 0;
 }

@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
 
 import './main-page.css';
-import { HeartFilled, MenuFoldOutlined, MenuUnfoldOutlined, TrophyFilled } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu } from 'antd';
+import {
+    AndroidFilled,
+    AppleFilled,
+    HeartFilled,
+    MenuFoldOutlined,
+    MenuUnfoldOutlined,
+    SettingOutlined,
+    TrophyFilled,
+} from '@ant-design/icons';
+import { Breadcrumb, Button, Layout, Menu } from 'antd';
 
 import Icon from '@ant-design/icons';
 import type { CustomIconComponentProps } from '@ant-design/icons/lib/components/Icon';
-import Title from 'antd/lib/typography/Title';
+import { Typography } from 'antd';
+import { Card } from 'antd';
+import { Footer } from 'antd/lib/layout/layout';
 
 const { Header, Sider, Content } = Layout;
+const { Title } = Typography;
+const { Meta } = Card;
 
 export const MainPage: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
@@ -111,7 +123,11 @@ export const MainPage: React.FC = () => {
                             },
                         ]}
                     />
-                    <div className='trigger-rectangle' onClick={() => setCollapsed(!collapsed)}>
+                    <div
+                        data-test-id='sider-switch'
+                        className='trigger-rectangle'
+                        onClick={() => setCollapsed(!collapsed)}
+                    >
                         {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                             className: 'trigger',
                         })}
@@ -140,20 +156,28 @@ export const MainPage: React.FC = () => {
                         >
                             <Breadcrumb.Item>Главная</Breadcrumb.Item>
                         </Breadcrumb>
-                        <Title
-                            style={{
-                                padding: '13px 0 0 24px',
-                                fontFamily: '"Inter", sans-serif',
-                                fontWeight: 700,
-                                fontSize: '38px',
-                                lineHeight: '130%',
-                                color: '#262626',
-                                width: 1055,
-                            }}
-                        >
-                            Приветствуем тебя в CleverFit — приложении, которое поможет тебе
-                            добиться своей мечты!
-                        </Title>
+                        <div className='header-content-wrapper'>
+                            <Title
+                                style={{
+                                    padding: '13px 0 0 24px',
+                                    fontFamily: '"Inter", sans-serif',
+                                    fontWeight: 700,
+                                    fontSize: '38px',
+                                    lineHeight: '130%',
+                                    color: '#262626',
+                                    width: 1055,
+                                }}
+                            >
+                                Приветствуем тебя в CleverFit — приложении, которое поможет тебе
+                                добиться своей мечты!
+                            </Title>
+                            <div className='settings-button-container'>
+                                <Button type='text'>
+                                    <SettingOutlined />
+                                    Настройки
+                                </Button>
+                            </div>
+                        </div>
                     </Header>
                     <Content
                         style={{
@@ -162,8 +186,80 @@ export const MainPage: React.FC = () => {
                             background: 'transparent',
                         }}
                     >
-                        Content
+                        <div className='description'>
+                            <Title
+                                level={5}
+                                style={{
+                                    lineHeight: '131%',
+                                    letterSpacing: -0.15,
+                                    marginBottom: 0,
+                                }}
+                            >
+                                С CleverFit ты сможешь: <br />— планировать свои тренировки на
+                                календаре, выбирая тип и уровень нагрузки; <br />— отслеживать свои
+                                достижения в разделе статистики, сравнивая свои результаты <br />с
+                                нормами и рекордами; <br />— создавать свой профиль, где ты можешь
+                                загружать свои фото, видео и отзывы <br />о тренировках; <br />—
+                                выполнять расписанные тренировки для разных частей тела, следуя
+                                подробным <br />
+                                инструкциям и советам профессиональных тренеров.
+                            </Title>
+                        </div>
+                        <div className='sub-title'>
+                            <Title
+                                level={4}
+                                style={{ lineHeight: '131%', letterSpacing: -0.1, marginBottom: 0 }}
+                            >
+                                CleverFit — это не просто приложение, а твой личный помощник <br />в
+                                мире фитнеса. Не откладывай на завтра — начни тренироваться уже
+                                сегодня!
+                            </Title>
+                        </div>
+                        <div className='cards'>
+                            <Card
+                                title='Расписать тренировки'
+                                bordered={false}
+                                // style={{ maxWidth: 240, height: 101 }}
+                            >
+                                <HeartFilled style={{ color: '#061178', fontSize: '13px' }} />
+                                <span>Тренировки</span>
+                            </Card>
+                            <Card
+                                title='Назначить календарь'
+                                bordered={false}
+                                // style={{ maxWidth: 240, height: 101 }}
+                            >
+                                <CalendarIcon style={{ color: '#061178', fontSize: '10px' }} />
+                                <span>Календарь</span>
+                            </Card>
+                            <Card
+                                title='Заполнить профиль'
+                                bordered={false}
+                                // style={{ maxWidth: 240, height: 101 }}
+                            >
+                                <ProfileIcon style={{ color: '#061178', fontSize: '10px' }} />
+                                <span>Профиль</span>
+                            </Card>
+                        </div>
                     </Content>
+                    <Footer style={{ background: 'transparent' }}>
+                        <Button type='text' className='see-reviews'>
+                            Смотреть отзывы
+                        </Button>
+                        <Card bordered={false}>
+                            <Meta title='Скачать на телефон ' description='Доступно в PRO-тарифе' />
+                            <div className='actions'>
+                                <Button type='text'>
+                                    <AndroidFilled />
+                                    <span>Android OS</span>
+                                </Button>
+                                <Button type='text'>
+                                    <AppleFilled />
+                                    <span>Apple iOS</span>
+                                </Button>
+                            </div>
+                        </Card>
+                    </Footer>
                 </Layout>
             </Layout>
         </div>
