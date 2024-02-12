@@ -24,6 +24,7 @@ const { Meta } = Card;
 
 export const MainPage: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
+    const [isMinScreen, setIsMinScreen] = useState(false);
 
     const CalendarSvg = () => (
         <svg
@@ -65,6 +66,30 @@ export const MainPage: React.FC = () => {
         <Icon component={ProfileSvg} {...props} />
     );
 
+    const ExitSvg = () => (
+        <svg
+            width='16'
+            height='16'
+            viewBox='0 0 16 16'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+        >
+            <path
+                d='M3.74621 7.39397V5.86897C3.74621 5.80112 3.66943 5.76183 3.61585 5.80469L0.919425 7.93683C0.90984 7.94439 0.902093 7.95402 0.896766 7.965C0.891439 7.97598 0.888672 7.98802 0.888672 8.00022C0.888672 8.01243 0.891439 8.02447 0.896766 8.03545C0.902093 8.04643 0.90984 8.05606 0.919425 8.06362L3.61585 10.1975C3.66764 10.2386 3.74621 10.2011 3.74621 10.1333V8.60826H10.6664V7.39397H3.74621Z'
+                fill='black'
+            />
+            <path
+                fill-rule='evenodd'
+                clip-rule='evenodd'
+                d='M4.62716 0.929688H14.0474C14.3242 0.929688 14.5474 1.1529 14.5474 1.42969V14.5725C14.5474 14.8493 14.3242 15.0725 14.0474 15.0725H4.62716C4.35038 15.0725 4.12716 14.8493 4.12716 14.5725V11.5725C4.12716 11.5333 4.15931 11.5011 4.19859 11.5011H5.27002C5.30931 11.5011 5.34145 11.5333 5.34145 11.5725V13.8583H13.3331V8.60826V7.39397V2.14397H5.34145V4.42969C5.34145 4.46897 5.30931 4.50112 5.27002 4.50112H4.19859C4.15931 4.50112 4.12716 4.46897 4.12716 4.42969V1.42969C4.12716 1.1529 4.35038 0.929688 4.62716 0.929688Z'
+                fill='black'
+            />
+        </svg>
+    );
+    const ExitIcon = (props: Partial<CustomIconComponentProps>) => (
+        <Icon component={ExitSvg} {...props} />
+    );
+
     return (
         <div className='wrapper'>
             <Layout
@@ -76,13 +101,17 @@ export const MainPage: React.FC = () => {
                 }}
             >
                 <Sider
-                    style={{ background: '#fff' }}
-                    collapsedWidth={64}
-                    width={208}
+                    style={{ background: '#fff', height: '100vh', position: isMinScreen ? 'absolute' : 'relative', zIndex: 100}}
+                    collapsedWidth={isMinScreen ? 0 : 64}
+                    width={isMinScreen ? 106 : 208}
                     trigger={null}
                     collapsible
                     collapsed={collapsed}
-                >
+                    breakpoint='md'
+                    onBreakpoint={(broken) => {
+                        setIsMinScreen(broken);
+                      }}
+                   >
                     <div className={collapsed ? 'logo-min' : 'logo'} />
                     <Menu
                         style={{
@@ -96,30 +125,54 @@ export const MainPage: React.FC = () => {
                             {
                                 key: '1',
                                 icon: (
-                                    <CalendarIcon style={{ color: '#061178', fontSize: '14px' }} />
+                                    !isMinScreen && <CalendarIcon style={{ color: '#061178', fontSize: '14px' }} />
                                 ),
                                 label: 'Календарь',
+                                style: { marginTop: 10 },
                             },
                             {
                                 key: '2',
                                 icon: (
-                                    <HeartFilled style={{ color: '#061178', fontSize: '14px' }} />
+                                    !isMinScreen && <HeartFilled style={{ color: '#061178', fontSize: '14px' }} />
                                 ),
                                 label: 'Тренировки',
+                                style: { marginTop: 10 },
                             },
                             {
                                 key: '3',
                                 icon: (
-                                    <TrophyFilled style={{ color: '#061178', fontSize: '14px' }} />
+                                    !isMinScreen && <TrophyFilled style={{ color: '#061178', fontSize: '14px' }} />
                                 ),
                                 label: 'Достижения',
+                                style: { marginTop: 10 },
                             },
                             {
                                 key: '4',
                                 icon: (
-                                    <ProfileIcon style={{ color: '#061178', fontSize: '14px' }} />
+                                    !isMinScreen && <ProfileIcon style={{ color: '#061178', fontSize: '14px' }} />
                                 ),
                                 label: 'Профиль',
+                                style: { marginTop: 10 },
+                            },
+                            {
+                                key: '5',
+                                icon: (
+                                    !isMinScreen && <ExitIcon
+                                        style={{
+                                            color: '#061178',
+                                            margin: collapsed
+                                                ? '3px 12px 0 -10px'
+                                                : '2px 12px 0 -2px',
+                                            alignItems: 'center',
+                                        }}
+                                    />
+                                ),
+                                label: 'Выход',
+                                style: {
+                                    marginTop: 'auto',
+                                    height: 38,
+                                    borderTop: '1px solid var(--character-light-dividers)',
+                                },
                             },
                         ]}
                     />
@@ -138,13 +191,7 @@ export const MainPage: React.FC = () => {
                         background: 'transparent',
                     }}
                 >
-                    <Header
-                        style={{
-                            padding: 0,
-                            background: '#f0f5ff',
-                            height: 168,
-                        }}
-                    >
+                    <Header>
                         <Breadcrumb
                             style={{
                                 margin: '14px 0 0 24px',
@@ -157,23 +204,13 @@ export const MainPage: React.FC = () => {
                             <Breadcrumb.Item>Главная</Breadcrumb.Item>
                         </Breadcrumb>
                         <div className='header-content-wrapper'>
-                            <Title
-                                style={{
-                                    padding: '13px 0 0 24px',
-                                    fontFamily: '"Inter", sans-serif',
-                                    fontWeight: 700,
-                                    fontSize: '38px',
-                                    lineHeight: '130%',
-                                    color: '#262626',
-                                    width: 1055,
-                                }}
-                            >
-                                Приветствуем тебя в CleverFit — приложении, которое поможет тебе
-                                добиться своей мечты!
+                            <Title>
+                                Приветствуем тебя в CleverFit — приложении,
+                                которое&#160;поможет&#160;тебе&#160;добиться своей мечты!
                             </Title>
                             <div className='settings-button-container'>
                                 <Button type='text'>
-                                    <SettingOutlined />
+                                    <SettingOutlined className='settings-button-icon' />
                                     Настройки
                                 </Button>
                             </div>
@@ -196,13 +233,12 @@ export const MainPage: React.FC = () => {
                                 }}
                             >
                                 С CleverFit ты сможешь: <br />— планировать свои тренировки на
-                                календаре, выбирая тип и уровень нагрузки; <br />— отслеживать свои
-                                достижения в разделе статистики, сравнивая свои результаты <br />с
-                                нормами и рекордами; <br />— создавать свой профиль, где ты можешь
-                                загружать свои фото, видео и отзывы <br />о тренировках; <br />—
-                                выполнять расписанные тренировки для разных частей тела, следуя
-                                подробным <br />
-                                инструкциям и советам профессиональных тренеров.
+                                календаре, выбирая тип и&#160;уровень нагрузки; <br />— отслеживать
+                                свои достижения в разделе статистики, сравнивая свои результаты
+                                с&#160;нормами и рекордами; <br />— создавать свой профиль, где ты
+                                можешь загружать свои фото, видео и отзывы о&#160;тренировках;{' '}
+                                <br />— выполнять расписанные тренировки для разных частей тела,
+                                следуя подробным инструкциям и советам профессиональных тренеров.
                             </Title>
                         </div>
                         <div className='sub-title'>
@@ -210,9 +246,9 @@ export const MainPage: React.FC = () => {
                                 level={4}
                                 style={{ lineHeight: '131%', letterSpacing: -0.1, marginBottom: 0 }}
                             >
-                                CleverFit — это не просто приложение, а твой личный помощник <br />в
-                                мире фитнеса. Не откладывай на завтра — начни тренироваться уже
-                                сегодня!
+                                CleverFit — это не просто приложение, а твой личный помощник
+                                в&#160;мире фитнеса. Не откладывай на завтра — начни тренироваться
+                                уже сегодня!
                             </Title>
                         </div>
                         <div className='cards'>

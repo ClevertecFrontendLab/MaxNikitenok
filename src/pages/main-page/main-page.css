@@ -4,6 +4,7 @@
     margin: 0 auto;
     background-image: url(../../img/Main_page_light.jpg);
     background-size: cover;
+    background-position: center;
     border-left: 1px solid #f0f0f0;
     border-right: 1px solid #f0f0f0;
 }
@@ -49,22 +50,42 @@
 }
 
 .menu {
-    height: 234px;
+    height: calc(100% - 134px);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     border: none;
     background: #fff;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-family);
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
-    color: #262626;
+    color: var(--character-light-title-85);
+}
+
+Menu .menu .ant-menu-item {
+    margin-top: 10px;
+}
+
+header.ant-layout-header {
+    padding: 0;
+    background: var(--primary-light-1);
+    flex-basis: content;
 }
 
 .header-content-wrapper {
     display: flex;
     justify-content: space-between;
+}
+
+.header-content-wrapper h1.ant-typography {
+    padding: 13px 0 0 24px;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 130%;
+    color: var(--character-light-title-85);
+    max-width: 1055px;
+    margin-bottom: 21px;
 }
 
 .settings-button-container {
@@ -95,6 +116,7 @@
 
 .description {
     margin-bottom: 24px;
+    /* padding-right: 48px; */
 }
 
 .sub-title {
@@ -189,4 +211,59 @@ Footer .actions {
     display: flex;
     border-top: 1px solid #f0f0f0;
     padding: 12px 0;
+}
+
+@media all and (max-width: 1200px) {
+    .header-content-wrapper h1.ant-typography {
+        font-weight: 500;
+        font-size: 32px;
+    }
+}
+
+@media all and (max-width: 992px) {
+    .wrapper {
+        min-height: 100vh;
+        max-width: 834px;
+        margin: 0 auto;
+        background-image: url(../../img/Main_page_light.jpg);
+        background-size: cover;
+        border-left: 1px solid #f0f0f0;
+        border-right: 1px solid #f0f0f0;
+    }
+
+    .header-content-wrapper h1.ant-typography {
+        font-weight: 500;
+        font-size: 24px;
+        margin-bottom: 22px;
+    }
+
+    .settings-button-container .settings-button-icon {
+        display: none;
+    }
+
+    .settings-button-container .ant-btn > .anticon + span {
+        margin: 0;
+    }
+
+    .cards {
+        text-align: start;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .cards {
+        gap: 8px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    Footer.ant-layout-footer {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: end;
+    }
+}
+
+@media all and (max-width: 576px) {
+
 }
