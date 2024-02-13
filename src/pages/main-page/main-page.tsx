@@ -12,7 +12,7 @@ import {
 } from '@ant-design/icons';
 import { Breadcrumb, Button, Layout, Menu, Typography, Card } from 'antd';
 import { Footer } from 'antd/lib/layout/layout';
-import { CalendarIcon, ExitIcon, ProfileIcon } from '@components/customIcons/customIcons';
+import { CalendarIconMenu, CalendarIconCard, ExitIcon, ProfileIconMenu, ProfileIconCard } from '@components/customIcons/customIcons';
 
 const { Header, Sider, Content } = Layout;
 const { Title } = Typography;
@@ -63,11 +63,11 @@ export const MainPage: React.FC = () => {
                             {
                                 key: '1',
                                 icon: !isMinScreen && (
-                                    <CalendarIcon style={{ color: '#061178', fontSize: '14px' }} />
+                                    <CalendarIconMenu style={{ color: '#061178', fontSize: '14px' }} />
                                 ),
                                 label: 'Календарь',
                                 style: {
-                                    margin: isMinScreen ? '-10px -10px 20px -10px' : '10px 0 8px 0',
+                                    margin: isMinScreen ? '-10px -10px 20px -19px' : '10px 0 8px 0',
                                 },
                             },
                             {
@@ -77,7 +77,7 @@ export const MainPage: React.FC = () => {
                                 ),
                                 label: 'Тренировки',
                                 style: {
-                                    margin: isMinScreen ? '-10px -10px 20px -10px' : '10px 0 8px 0',
+                                    margin: isMinScreen ? '-10px -10px 20px -19px' : '10px 0 8px 0',
                                 },
                             },
                             {
@@ -87,17 +87,17 @@ export const MainPage: React.FC = () => {
                                 ),
                                 label: 'Достижения',
                                 style: {
-                                    margin: isMinScreen ? '-10px -10px 20px -10px' : '10px 0 8px 0',
+                                    margin: isMinScreen ? '-10px -10px 20px -19px' : '10px 0 8px 0',
                                 },
                             },
                             {
                                 key: '4',
                                 icon: !isMinScreen && (
-                                    <ProfileIcon style={{ color: '#061178', fontSize: '14px' }} />
+                                    <ProfileIconMenu style={{ color: '#061178', fontSize: '14px' }} />
                                 ),
                                 label: 'Профиль',
                                 style: {
-                                    margin: isMinScreen ? '-10px -10px 20px -10px' : '10px 0 0 0',
+                                    margin: isMinScreen ? '-10px -10px 20px -19px' : '10px 0 0 0',
                                 },
                             },
                             {
@@ -128,9 +128,18 @@ export const MainPage: React.FC = () => {
                         className='trigger-rectangle'
                         onClick={() => setCollapsed(!collapsed)}
                     >
-                        {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-                            className: 'trigger',
-                        })}
+                        <div className='trigger'>
+                            {collapsed ? (
+                                <MenuUnfoldOutlined
+                                    style={{ color: 'var(--character-light-secondary-45)' }}
+                                />
+                            ) : (
+                                <MenuFoldOutlined
+                                    style={{ color: 'var(--character-light-secondary-45)' }}
+                                />
+                            )}
+                        </div>
+                        , ,
                     </div>
                 </Sider>
                 <Layout
@@ -198,25 +207,22 @@ export const MainPage: React.FC = () => {
                             <Card
                                 title='Расписать тренировки'
                                 bordered={false}
-                                // style={{ maxWidth: 240, height: 101 }}
+         
                             >
-                                <HeartFilled style={{ color: '#061178', fontSize: '13px' }} />
+                                <HeartFilled
+                                    style={{
+                                        color: 'color: var(--primary-light-6)',
+                                        fontSize: '13px',
+                                    }}
+                                />
                                 <span>Тренировки</span>
                             </Card>
-                            <Card
-                                title='Назначить календарь'
-                                bordered={false}
-                                // style={{ maxWidth: 240, height: 101 }}
-                            >
-                                <CalendarIcon style={{ color: '#061178', fontSize: '10px' }} />
+                            <Card title='Назначить календарь' bordered={false}>
+                                <CalendarIconCard />
                                 <span>Календарь</span>
                             </Card>
-                            <Card
-                                title='Заполнить профиль'
-                                bordered={false}
-                                // style={{ maxWidth: 240, height: 101 }}
-                            >
-                                <ProfileIcon style={{ color: '#061178', fontSize: '10px' }} />
+                            <Card title='Заполнить профиль' bordered={false}>
+                                <ProfileIconCard />
                                 <span>Профиль</span>
                             </Card>
                         </div>

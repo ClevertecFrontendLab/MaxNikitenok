@@ -284,6 +284,11 @@ footer .actions {
         border-bottom: 6px solid transparent;
     }
 
+    .ant-menu.ant-menu-inline .ant-menu-item:not(:last-child) {
+        padding: 0;
+        width: 119%;
+    }
+
     .header-content-wrapper h1.ant-typography {
         font-size: 20px;
         margin-bottom: 22px;
