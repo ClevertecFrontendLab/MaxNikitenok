@@ -5,8 +5,10 @@
     background-image: url(../../img/Main_page_light.jpg);
     background-size: cover;
     background-position: center;
-    border-left: 1px solid #f0f0f0;
-    border-right: 1px solid #f0f0f0;
+}
+
+.ant-layout-sider {
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
 }
 
 .trigger {
@@ -21,7 +23,7 @@
 .trigger-rectangle {
     position: absolute;
     top: calc(50vh - 33px);
-    right: -20px;
+    right: -19px;
     width: 0;
     height: 66px;
     margin: auto;
@@ -62,7 +64,7 @@
     color: var(--character-light-title-85);
 }
 
-Menu .menu .ant-menu-item {
+menu .menu .ant-menu-item {
     margin-top: 10px;
 }
 
@@ -88,12 +90,18 @@ header.ant-layout-header {
     margin-bottom: 21px;
 }
 
+.ant-layout-content {
+    padding: 24px;
+    min-height: 280px;
+    background: transparent;
+}
+
 .settings-button-container {
     padding: 7px 21px 0 0;
     line-height: 0;
 }
 
-.settings-button-container Button {
+.settings-button-container button {
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 14px;
@@ -116,7 +124,6 @@ header.ant-layout-header {
 
 .description {
     margin-bottom: 24px;
-    /* padding-right: 48px; */
 }
 
 .sub-title {
@@ -124,6 +131,7 @@ header.ant-layout-header {
 }
 
 .cards {
+    font-family: var(--font-family);
     max-width: 752px;
     display: flex;
     gap: 16px;
@@ -141,7 +149,6 @@ header.ant-layout-header {
 
 .cards .ant-card-head {
     padding: 12px 24px;
-    font-family: var(--font-family);
     font-weight: 400;
     font-size: 16px;
     line-height: 130%;
@@ -149,8 +156,7 @@ header.ant-layout-header {
 }
 
 .cards .ant-card-body {
-    padding: 18px 6px 18px 0px;
-    font-family: var(--font-family);
+    padding: 18px 6px 18px 0;
     font-weight: 400;
     font-size: 14px;
     line-height: 130%;
@@ -162,7 +168,7 @@ header.ant-layout-header {
     margin-left: 8px;
 }
 
-Footer Button.see-reviews {
+footer button.see-reviews {
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 16px;
@@ -172,18 +178,18 @@ Footer Button.see-reviews {
     margin-bottom: 4px;
 }
 
-Footer.ant-layout-footer {
+footer.ant-layout-footer {
     display: flex;
-    padding: 0 24px 42px 24px;
+    padding: 0 24px 42px;
     justify-content: space-between;
     align-items: end;
 }
 
-Footer .ant-card-body {
+footer .ant-card-body {
     padding: 0;
 }
 
-Footer .ant-card-meta-title {
+footer .ant-card-meta-title {
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 16px;
@@ -191,7 +197,7 @@ Footer .ant-card-meta-title {
     color: var(--primary-light-6);
 }
 
-Footer .ant-card-meta-description {
+footer .ant-card-meta-description {
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 14px;
@@ -199,15 +205,15 @@ Footer .ant-card-meta-description {
     color: var(--character-light-secondary-45);
 }
 
-Footer .ant-card-meta-detail {
+footer .ant-card-meta-detail {
     padding: 16px 24px;
 }
 
-Footer > Meta {
+footer > meta {
     border-bottom: 1px solid #f0f0f0;
 }
 
-Footer .actions {
+footer .actions {
     display: flex;
     border-top: 1px solid #f0f0f0;
     padding: 12px 0;
@@ -251,19 +257,102 @@ Footer .actions {
 }
 
 @media all and (max-width: 768px) {
+    .logo {
+        height: 19px;
+        margin: 16px 0 43px 16px;
+        background: url(../../img/LogoFullSmall.svg) no-repeat;
+        background-size: 72px;
+    }
+
+    .trigger {
+        position: absolute;
+        left: -23px;
+        top: 11px;
+        width: 14px;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+    .trigger-rectangle {
+        top: 23px;
+        right: -32px;
+        width: 0;
+        height: 50px;
+        margin: auto;
+        border-left: 32px solid #fff;
+        border-top: 6px solid transparent;
+        border-bottom: 6px solid transparent;
+    }
+
+    .header-content-wrapper h1.ant-typography {
+        font-size: 20px;
+        margin-bottom: 22px;
+        padding: 5px 0 0 23px;
+    }
+
+    .settings-button-container button {
+        margin: -13px -14px 0 0;
+    }
+
+    .settings-button-container .settings-button-icon {
+        display: inline-flex;
+        padding: 8px;
+        border: 1px solid var(--character-light-border);
+        border-radius: 100px;
+        background: var(--character-light-primary-inverse);
+        box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+    }
+
+    .ant-layout-content {
+        padding: 24px 15px 23px;
+        min-height: 280px;
+        background: transparent;
+    }
+
+    .description,
+    .sub-title {
+        max-width: 752px;
+        padding: 16px;
+        box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+        background: var(--character-light-primary-inverse);
+        font-family: var(--font-family);
+    }
+
+    .description {
+        margin-bottom: 24px;
+    }
+
+    .sub-title {
+        margin-bottom: 16px;
+    }
+
     .cards {
         gap: 8px;
         flex-direction: column;
         text-align: center;
     }
 
-    Footer.ant-layout-footer {
-        display: flex;
+    footer.ant-layout-footer {
         flex-direction: column-reverse;
-        align-items: end;
+        align-items: center;
+        padding: 0 15px 42px;
     }
-}
 
-@media all and (max-width: 576px) {
+    footer .ant-card {
+        width: 100%;
+    }
 
+    footer .ant-card-meta-detail {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    footer .actions {
+        justify-content: space-around;
+    }
+
+    footer button.see-reviews {
+        margin-top: 28px;
+    }
 }
