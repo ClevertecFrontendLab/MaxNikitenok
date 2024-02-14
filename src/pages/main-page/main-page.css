@@ -1,42 +1,363 @@
-#root {
-    max-width: 1280px;
+.wrapper {
+    min-height: 100vh;
+    max-width: 1440px;
     margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
+    background-image: url(../../img/Main_page_light.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.ant-layout-sider {
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+}
+
+.trigger {
+    position: absolute;
+    left: -16px;
+    top: 17px;
+    width: 12.5px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.trigger-rectangle {
+    position: absolute;
+    top: calc(50vh - 33px);
+    right: -19px;
+    width: 0;
+    height: 66px;
+    margin: auto;
+    border-left: 20px solid #fff;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+}
+.trigger-rectangle:hover .trigger {
+    color: #1890ff;
 }
 
 .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-}
-.logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-    filter: drop-shadow(0 0 2em #61dafbaa);
+    height: 34px;
+    margin: 44px 0 57px 29px;
+    background: url(../../img/LogoFull.svg) no-repeat;
+    background-size: 132px;
+    transition: all 0.3s;
 }
 
-@keyframes logo-spin {
-    from {
-        transform: rotate(0deg);
+.logo-min {
+    height: 34px;
+    margin: 49px 0 53px 18px;
+    background: url(../../img/LogoMin.svg) no-repeat;
+    background-size: 28px;
+    transition: all 0.3s;
+}
+
+.menu {
+    height: calc(100% - 134px);
+    display: flex;
+    flex-direction: column;
+    border: none;
+    background: #fff;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    color: var(--character-light-title-85);
+}
+
+menu .menu .ant-menu-item {
+    margin-top: 10px;
+}
+
+header.ant-layout-header {
+    padding: 0;
+    background: var(--primary-light-1);
+    flex-basis: content;
+}
+
+.header-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-content-wrapper h1.ant-typography {
+    padding: 13px 0 0 24px;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 130%;
+    color: var(--character-light-title-85);
+    max-width: 1055px;
+    margin-bottom: 21px;
+}
+
+.ant-layout-content {
+    padding: 24px;
+    min-height: 280px;
+    background: transparent;
+}
+
+.settings-button-container {
+    padding: 7px 21px 0 0;
+    line-height: 0;
+}
+
+.settings-button-container button {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+    color: var(--character-light-title-85);
+}
+
+.settings-button-container .ant-btn > .anticon + span {
+    margin-left: 11px;
+}
+
+.description,
+.sub-title {
+    max-width: 752px;
+    padding: 24px;
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+    background: var(--character-light-primary-inverse);
+    font-family: var(--font-family);
+}
+
+.description {
+    margin-bottom: 24px;
+}
+
+.sub-title {
+    margin-bottom: 16px;
+}
+
+.cards {
+    font-family: var(--font-family);
+    max-width: 752px;
+    display: flex;
+    gap: 16px;
+    text-align: center;
+}
+
+.cards .ant-card {
+    flex: 1;
+}
+
+.cards .ant-card-head-title {
+    padding: 0;
+    white-space: wrap;
+}
+
+.cards .ant-card-head {
+    padding: 12px 24px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: var(--character-light-title-85);
+}
+
+.cards .ant-card-body {
+    padding: 18px 6px 18px 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    text-align: center;
+    color: var(--primary-light-6);
+}
+
+.cards .ant-card-body span {
+    margin-left: 8px;
+}
+
+footer button.see-reviews {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    text-align: center;
+    color: var(--primary-light-6);
+    margin-bottom: 4px;
+}
+
+footer.ant-layout-footer {
+    display: flex;
+    padding: 0 24px 42px;
+    justify-content: space-between;
+    align-items: end;
+}
+
+footer .ant-card-body {
+    padding: 0;
+}
+
+footer .ant-card-meta-title {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: var(--primary-light-6);
+}
+
+footer .ant-card-meta-description {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    color: var(--character-light-secondary-45);
+}
+
+footer .ant-card-meta-detail {
+    padding: 16px 24px;
+}
+
+footer > meta {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+footer .actions {
+    display: flex;
+    border-top: 1px solid #f0f0f0;
+    padding: 12px 0;
+}
+
+@media all and (max-width: 1200px) {
+    .header-content-wrapper h1.ant-typography {
+        font-weight: 500;
+        font-size: 32px;
     }
-    to {
-        transform: rotate(360deg);
+}
+
+@media all and (max-width: 992px) {
+    .wrapper {
+        min-height: 100vh;
+        max-width: 834px;
+        margin: 0 auto;
+        background-image: url(../../img/Main_page_light.jpg);
+        background-size: cover;
+        border-left: 1px solid #f0f0f0;
+        border-right: 1px solid #f0f0f0;
+    }
+
+    .header-content-wrapper h1.ant-typography {
+        font-weight: 500;
+        font-size: 24px;
+        margin-bottom: 22px;
+    }
+
+    .settings-button-container .settings-button-icon {
+        display: none;
+    }
+
+    .settings-button-container .ant-btn > .anticon + span {
+        margin: 0;
+    }
+
+    .cards {
+        text-align: start;
     }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    a:nth-of-type(2) .logo {
-        animation: logo-spin infinite 20s linear;
+@media all and (max-width: 768px) {
+    .logo {
+        height: 19px;
+        margin: 16px 0 43px 16px;
+        background: url(../../img/LogoFullSmall.svg) no-repeat;
+        background-size: 72px;
     }
-}
 
-.card {
-    padding: 2em;
-}
+    .trigger {
+        position: absolute;
+        left: -23px;
+        top: 11px;
+        width: 14px;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
 
-.read-the-docs {
-    color: #888;
+    .trigger-rectangle {
+        top: 23px;
+        right: -32px;
+        width: 0;
+        height: 50px;
+        margin: auto;
+        border-left: 32px solid #fff;
+        border-top: 6px solid transparent;
+        border-bottom: 6px solid transparent;
+    }
+
+    .ant-menu.ant-menu-inline .ant-menu-item:not(:last-child) {
+        padding: 0;
+        width: 119%;
+    }
+
+    .header-content-wrapper h1.ant-typography {
+        font-size: 20px;
+        margin-bottom: 22px;
+        padding: 5px 0 0 23px;
+    }
+
+    .settings-button-container button {
+        margin: -13px -14px 0 0;
+    }
+
+    .settings-button-container .settings-button-icon {
+        display: inline-flex;
+        padding: 8px;
+        border: 1px solid var(--character-light-border);
+        border-radius: 100px;
+        background: var(--character-light-primary-inverse);
+        box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+    }
+
+    .ant-layout-content {
+        padding: 24px 15px 23px;
+        min-height: 280px;
+        background: transparent;
+    }
+
+    .description,
+    .sub-title {
+        max-width: 752px;
+        padding: 16px;
+        box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.04);
+        background: var(--character-light-primary-inverse);
+        font-family: var(--font-family);
+    }
+
+    .description {
+        margin-bottom: 24px;
+    }
+
+    .sub-title {
+        margin-bottom: 16px;
+    }
+
+    .cards {
+        gap: 8px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    footer.ant-layout-footer {
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 0 15px 42px;
+    }
+
+    footer .ant-card {
+        width: 100%;
+    }
+
+    footer .ant-card-meta-detail {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    footer .actions {
+        justify-content: space-around;
+    }
+
+    footer button.see-reviews {
+        margin-top: 28px;
+    }
 }
