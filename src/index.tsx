@@ -12,6 +12,9 @@ import './index.css';
 import 'antd/dist/antd.css';
 import { Authorization } from '@components/Authorization/Authorization';
 import { Registration } from '@components/Registration/Registration';
+import { ResultPage } from '@pages/result-page/resutl-page';
+import { ErrorLogin } from '@components/Error-login/Error-login';
+import { Success } from '@components/Success/Success';
 
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
@@ -25,6 +28,10 @@ root.render(
                     <Route path='/auth' element={<EnterPage />}>
                         <Route path='/auth' element={<Authorization />} />
                         <Route path='/auth/registration' element={<Registration />} />
+                    </Route>
+                    <Route path='/result' element={<ResultPage />}>
+                        <Route path='/result/error-login' element={<ErrorLogin />} />
+                        <Route path='/result/success' element={<Success />} />
                     </Route>
                 </Routes>
             </Router>
