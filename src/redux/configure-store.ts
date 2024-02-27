@@ -3,6 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { createReduxHistoryContext } from "redux-first-history";
 import { createBrowserHistory } from "history";
 import { authSlice } from "./auth-slice";
+import { useDispatch } from "react-redux";
 
 const {
   createReduxHistory,
@@ -19,3 +20,6 @@ export const store = configureStore({
 });
 
 export const history = createReduxHistory(store);
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
+export const useAppDispatch: () => AppDispatch = useDispatch
