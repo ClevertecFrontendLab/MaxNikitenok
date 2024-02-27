@@ -1,8 +1,7 @@
 import { Button } from 'antd';
-import styles from './Error-login.module.css';
-import { history } from '@redux/configure-store';
+import styles from './Error-check-email-no-exist.module.css';
 
-export const ErrorLogin: React.FC = () => {
+export const ErrorCheckEmailNoExist: React.FC = () => {
     return (
         <div className={styles.modalContent}>
             <div className={styles.image}>
@@ -20,9 +19,11 @@ export const ErrorLogin: React.FC = () => {
                 </svg>
             </div>
             <p className={styles.modalTitle}>Вход не выполнен</p>
-            <p className={styles.modalDescription}>Что-то пошло не так. Попробуйте еще раз</p>
-            <Button type='primary' size='middle' onClick={() => history.push('/auth')}>
-                Повторить
+            <p className={styles.modalDescription}>
+                Мы не нашли в базе вашего e-mail. Попробуйте войти другим e-mail.
+            </p>
+            <Button type='primary' size='middle'>
+                Мы не нашли в базе вашего e-mail. Попробуйте войти c другим e-mail.
             </Button>
         </div>
     );

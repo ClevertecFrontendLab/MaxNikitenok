@@ -1,8 +1,7 @@
 import { Button } from 'antd';
-import styles from './Error-login.module.css';
-import { history } from '@redux/configure-store';
+import styles from './Error-change-password.module.css';
 
-export const ErrorLogin: React.FC = () => {
+export const ErrorChangePassword: React.FC = () => {
     return (
         <div className={styles.modalContent}>
             <div className={styles.image}>
@@ -19,9 +18,9 @@ export const ErrorLogin: React.FC = () => {
                     />
                 </svg>
             </div>
-            <p className={styles.modalTitle}>Вход не выполнен</p>
-            <p className={styles.modalDescription}>Что-то пошло не так. Попробуйте еще раз</p>
-            <Button type='primary' size='middle' onClick={() => history.push('/auth')}>
+            <p className={styles.modalTitle}>Данные не сохранились</p>
+            <p className={styles.modalDescription}>Что-то пошло не так. Попробуйте ещё раз</p>
+            <Button type='primary' size='middle'>
                 Повторить
             </Button>
         </div>
