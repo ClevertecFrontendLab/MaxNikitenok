@@ -1,0 +1,108 @@
+.registration-form .login-form {
+    max-width: 300px;
+}
+
+.registration-form .ant-form-item {
+    margin-bottom: 32px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    text-align: center;
+    color: var(--character-light-title-85);
+}
+
+.ant-form-item-with-help .ant-form-item-explain {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 130%;
+    color: var(--character-light-secondary-45);
+}
+
+.registration-form .ant-form-item:nth-child(1) {
+    margin: 8px 0 32px;
+}
+
+.registration-form .ant-form-item:nth-child(2) {
+    margin-bottom: 46px;
+}
+
+.registration-form .ant-form-item:nth-child(3) {
+    margin-bottom: 62px;
+}
+
+.registration-form .ant-form-item:nth-child(4) {
+    margin-bottom: 56px;
+}
+
+.registration-form .ant-input-affix-wrapper {
+    padding: 0;
+}
+
+.registration-form .ant-input-affix-wrapper > .ant-input:not(textarea) {
+    padding: 8px 11px;
+    border-left: 1px solid var(--character-light-border);
+}
+
+.registration-form .ant-input-affix-wrapper .ant-input-suffix {
+margin-right: 7px;}
+
+.registration-form .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+    border-color: var(--primary-light-6);
+    box-shadow: 0 0 0 2px var(--character-light-border);
+}
+
+.registration-form .ant-input-affix-wrapper-focused {
+    border-color: var(--primary-light-6);
+    box-shadow: 0 0 0 2px var(--character-light-border);
+}
+
+.registration-form .ant-input-prefix {
+    margin-right: 0;
+    padding: 8px 13px;
+}
+
+.registration-form .ant-input {
+    padding: 8px 12px;
+}
+
+.registration-form .ant-input:focus,
+.registration-form .ant-input-focused {
+    border-color: var(--primary-light-6);
+    box-shadow: 0 0 0 2px var(--character-light-border);
+    border-right-width: 1px;
+    outline: 0;
+}
+
+.registration-form .login-form-forgot {
+    float: right;
+}
+
+.registration-form .login-form-button {
+    width: 100%;
+}
+
+.registration-form .ant-btn {
+    height: 40px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+}
+
+.registration-form .ant-btn-primary {
+    color: #fff;
+    border-color: var(--primary-light-6);
+    background: var(--primary-light-6);
+}
+
+.registration-form .ant-btn-primary:hover,
+.registration-form .ant-btn-primary:focus {
+    border: 1px solid var(--primary-light-5);
+    background: var(--primary-light-4);
+}
+
+.registration-form .ant-btn-primary:active {
+    border: 1px solid var(--primary-light-7);
+    background: var(--primary-light-7);
+}

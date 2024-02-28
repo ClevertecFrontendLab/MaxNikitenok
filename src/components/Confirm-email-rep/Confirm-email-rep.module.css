@@ -1,0 +1,120 @@
+.wrapper {
+    min-height: 100vh;
+    max-width: 1440px;
+    margin: 0 auto;
+    background-image: url(../../img/Enter_page_light.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.blur {
+    background: rgba(121, 156, 212, 0.5);
+    backdrop-filter: blur(6px);
+    height: 100vh;
+    width: 100%;
+    padding-top: 140px;
+}
+
+.modalContent {
+    position: absolute;
+    width: 539px;
+    height: 428px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 69px 38px 50px;
+    font-family: var(--font-family);
+    line-height: 130%;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+    background: var(--character-light-primary-inverse);
+}
+
+.image {
+    margin-bottom: 24px;
+}
+
+.modalTitle {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 130%;
+    text-align: center;
+    color: var(--character-light-title-85);
+    margin-bottom: 0;
+}
+
+.modalDescription {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    text-align: center;
+    color: var(--character-light-secondary-45);
+    margin-bottom: 23px;
+}
+.modalDescription span {
+    font-weight: 700;
+}
+
+.modalDescription__bottom {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    text-align: center;
+    color: var(--character-light-secondary-45);
+    margin-top: 24px;
+}
+
+.modalContent button {
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--character-light-primary-inverse);
+    height: 40px;
+    background-color: var(--primary-light-6);
+}
+
+.container {
+    width: 300px;
+    height: 40px;
+    margin: 0 auto;
+}
+
+.character,
+.character__inactive,
+.character__selected,
+.character__filled {
+    border: 1px solid var(--character-light-border);
+    border-radius: 2px;
+    padding: 5px 12px;
+    width: 40px;
+    height: 40px;
+    background: var(--character-light-primary-inverse);
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 28px;
+    text-align: center;
+    color: var(--character-light-title-85);
+}
+
+@media screen and (max-width: 576px) {
+    .modalContent {
+        width: 328px;
+        height: 457px;
+        padding: 37px 29px 50px;
+    }
+
+    .container {
+        width: 280px;
+        left: -4px;
+    }
+
+    .modalDescription__bottom {
+        padding: 0 20px;
+    }
+}

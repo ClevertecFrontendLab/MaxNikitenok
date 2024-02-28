@@ -1,0 +1,194 @@
+section.ant-layout {
+    min-height: 100vh;
+    max-width: 1440px;
+    background: transparent;
+    margin: 0 auto;
+}
+
+aside.ant-layout-sider {
+    background: #fff;
+    height: 100vh;
+    z-index: 100;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+}
+
+aside.ant-layout-sider .ant-menu-item {
+    margin-top: 10px;
+}
+
+header.ant-layout-header {
+    padding: 0;
+    background: var(--primary-light-1);
+    flex-basis: content;
+}
+
+header.ant-layout-header .ant-breadcrumb {
+    margin: 15px 0 1px 24px;
+
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    color: var(--character-light-title-85);
+}
+
+header.ant-layout-header h1.ant-typography {
+    padding: 13px 0 0 24px;
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 130%;
+    color: var(--character-light-title-85);
+    max-width: 1055px;
+    margin-bottom: 21px;
+}
+
+.ant-layout-content {
+    padding: 24px;
+    min-height: 280px;
+    background: transparent;
+}
+
+header.ant-layout-header .ant-btn > .anticon + span {
+    margin-left: 11px;
+}
+
+main.ant-layout-content h5.ant-typography {
+    line-height: 131%;
+    letter-spacing: -0.15;
+    margin-bottom: 0;
+}
+
+main.ant-layout-content h4.ant-typography {
+    line-height: 131%;
+    letter-spacing: -0.9;
+    margin-bottom: 0;
+}
+
+main.ant-layout-content .ant-card {
+    flex: 1;
+}
+
+main.ant-layout-content .ant-card-head-title {
+    padding: 0;
+    white-space: wrap;
+}
+
+main.ant-layout-content .ant-card-head {
+    padding: 12px 24px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: var(--character-light-title-85);
+}
+
+main.ant-layout-content .ant-card-body {
+    padding: 18px 6px 18px 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    text-align: center;
+    color: var(--primary-light-6);
+}
+
+main.ant-layout-content .ant-card-body span {
+    margin-left: 8px;
+}
+
+footer.ant-layout-footer {
+    display: flex;
+    padding: 0 24px 42px;
+    justify-content: space-between;
+    align-items: end;
+}
+
+footer.ant-layout-footer .ant-card-body {
+    padding: 0;
+}
+
+footer.ant-layout-footer .ant-card-meta-title {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: var(--primary-light-6);
+}
+
+footer.ant-layout-footer .ant-card-meta-description {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 130%;
+    color: var(--character-light-secondary-45);
+}
+
+footer.ant-layout-footer .ant-card-meta-detail {
+    padding: 16px 24px;
+}
+
+footer .actions {
+    display: flex;
+    border-top: 1px solid #f0f0f0;
+    padding: 12px 0;
+}
+
+@media all and (max-width: 1200px) {
+    .headerContentWrapper h1.ant-typography {
+        font-weight: 500;
+        font-size: 32px;
+    }
+}
+
+@media all and (max-width: 992px) {
+    .wrapper {
+        min-height: 100vh;
+        max-width: 834px;
+        margin: 0 auto;
+        background-image: url(../../img/Main_page_light.jpg);
+        background-size: cover;
+        border-left: 1px solid #f0f0f0;
+        border-right: 1px solid #f0f0f0;
+    }
+
+    header.ant-layout-header h1.ant-typography {
+        font-weight: 500;
+        font-size: 24px;
+        margin-bottom: 22px;
+    }
+
+    header.ant-layout-header .ant-btn > .anticon + span {
+        margin: 0;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .ant-menu.ant-menu-inline .ant-menu-item:not(:last-child) {
+        padding: 0;
+        width: 113%;
+    }
+
+    header.ant-layout-header h1.ant-typography {
+        font-size: 20px;
+        margin-bottom: 22px;
+        padding: 5px 0 0 23px;
+    }
+
+    .ant-layout-content {
+        padding: 24px 15px 23px;
+        min-height: 280px;
+        background: transparent;
+    }
+
+    footer.ant-layout-footer {
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 0 15px 42px;
+    }
+
+    footer.ant-layout-footer .ant-card {
+        width: 100%;
+    }
+
+    footer.ant-layout-footer .ant-card-meta-detail {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
