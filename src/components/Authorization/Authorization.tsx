@@ -4,27 +4,28 @@ import { useAppDispatch } from '@redux/configure-store';
 import { postLogin } from '@redux/thunks/post-login';
 import { useState } from 'react';
 import { postCheckEmail } from '@redux/thunks/post-check-email';
-// import { useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
-// import { selectAuth } from '@redux/auth-slice';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectAuth } from '@redux/auth-slice';
 
 export const Authorization: React.FC = () => {
     const dispatch = useAppDispatch();
-    // const navigate = useNavigate();
-    // const isAuth = useSelector(selectAuth);
+    const navigate = useNavigate();
+    const isAuth = useSelector(selectAuth);
 
     const onFinish = (values: { email: string; password: string; passwordRep: string }) => {
         const data = { email: values.email, password: values.password };
         console.log('Received values of form: ', values);
         dispatch(postLogin(data));
+        onReset();
     };
 
-    // useEffect(() => {
-    //     if (localStorage.getItem('accessToken')) {
-    //         navigate('/main');
-    //     }
-    // }, [isAuth, navigate]);
+    useEffect(() => {
+        if (localStorage.getItem('accessToken')) {
+            navigate('/main');
+        }
+    }, [isAuth, navigate]);
 
     const regexp =
         /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
@@ -40,7 +41,13 @@ export const Authorization: React.FC = () => {
     };
 
     const handleSubmit = () => {
-        dispatch(postCheckEmail({ email }));
+        if (isPasswordValid) dispatch(postCheckEmail({ email }));
+    };
+
+    const [form] = Form.useForm();
+
+    const onReset = () => {
+        form.resetFields();
     };
 
     return (
@@ -81,7 +88,7 @@ export const Authorization: React.FC = () => {
 
                     <Button
                         onClick={handleSubmit}
-                        disabled={!isPasswordValid}
+                        // disabled={!isPasswordValid}
                         style={{ border: 'none' }}
                         data-test-id='login-forgot-button'
                         className='login-form-forgot'

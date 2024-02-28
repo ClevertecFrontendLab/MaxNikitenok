@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { postRegister } from './thunks/post-register';
 import { postLogin } from './thunks/post-login';
-import { history } from './configure-store';
 import { postCheckEmail } from './thunks/post-check-email';
 import { postConfirmEmail } from './thunks/post-confirm-email';
 import { postChangePassword } from './thunks/post-change-password';

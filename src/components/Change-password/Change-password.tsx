@@ -1,29 +1,75 @@
-import { Button } from 'antd';
+import { Button, Form, Input } from 'antd';
 import styles from './Change-password.module.css';
+import { useAppDispatch } from '@redux/configure-store';
+import { postChangePassword } from '@redux/thunks/post-change-password';
 
 export const ChangePassword: React.FC = () => {
+    const dispatch = useAppDispatch();
+    const regexp = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[^!@#$%^&*(){}_].{7,}/g;
+    const onFinish = (values: { password: string; passwordRep: string }) => {
+        const data = { password: values.password,  confirmPassword: values.passwordRep};
+        console.log('Received values of form: ', values);
+        dispatch(postChangePassword(data));
+    };
+
     return (
         <div className={styles.modalContent}>
-            <div className={styles.image}>
-                <svg
-                    width='71'
-                    height='70'
-                    viewBox='0 0 71 70'
-                    fill='none'
-                    xmlns='http://www.w3.org/2000/svg'
-                >
-                    <path
-                        d='M35.5 0C16.1719 0 0.5 15.6719 0.5 35C0.5 54.3281 16.1719 70 35.5 70C54.8281 70 70.5 54.3281 70.5 35C70.5 15.6719 54.8281 0 35.5 0ZM50.6172 23.5703L34.1641 46.3828C33.9341 46.7038 33.631 46.9653 33.2797 47.1457C32.9285 47.3261 32.5394 47.4203 32.1445 47.4203C31.7497 47.4203 31.3605 47.3261 31.0093 47.1457C30.6581 46.9653 30.355 46.7038 30.125 46.3828L20.3828 32.8828C20.0859 32.4688 20.3828 31.8906 20.8906 31.8906H24.5547C25.3516 31.8906 26.1094 32.2734 26.5781 32.9297L32.1406 40.6484L44.4219 23.6172C44.8906 22.9687 45.6406 22.5781 46.4453 22.5781H50.1094C50.6172 22.5781 50.9141 23.1562 50.6172 23.5703Z'
-                        fill='#52C41A'
-                    />
-                </svg>
-            </div>
             <p className={styles.modalTitle}>Восстановление аккауанта</p>
-            <input type='text' />
-            <input type='text' />
-            <Button type='primary' size='middle'>
-                Coxhfybnm
-            </Button>
+            <Form
+                autoComplete='off'
+                name='normal_login'
+                className='login-form registration-form'
+                initialValues={{ remember: true }}
+                onFinish={onFinish}
+            >
+                <Form.Item
+                    help='Пароль не менее 8 латинских букв с заглавной и цифрой'
+                    name='password'
+                    rules={[
+                        { required: true, message: '' },
+                        {
+                            pattern: regexp,
+                            message: 'Пароль не менее 8 латинских букв с заглавной и цифрой',
+                        },
+                    ]}
+                >
+                    <Input.Password
+                        data-test-id='registration-password'
+                        type='password'
+                        placeholder='Password'
+                    />
+                </Form.Item>
+                <Form.Item
+                    name='passwordRep'
+                    rules={[
+                        { required: true, message: '' },
+                        ({ getFieldValue }) => ({
+                            validator(_, value) {
+                                if (!value || getFieldValue('password') === value) {
+                                    return Promise.resolve();
+                                }
+                                return Promise.reject('Пароли не совпадают');
+                            },
+                        }),
+                    ]}
+                >
+                    <Input.Password
+                        data-test-id='registration-confirm-password'
+                        type='passwordRep'
+                        placeholder='PasswordRep'
+                    />
+                </Form.Item>
+                <Form.Item>
+                    <Button
+                        data-test-id='change-entry-button'
+                        type='primary'
+                        htmlType='submit'
+                        className='login-form-button'
+                    >
+                        Сохранить
+                    </Button>
+                </Form.Item>
+            </Form>
         </div>
     );
 };

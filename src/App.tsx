@@ -42,10 +42,7 @@ export const App = () => {
 
                     <Route path='/result' element={<ResultPage />}>
                         <Route path='/result/success' element={<Success />} />
-                        <Route
-                            path=' /result/success-change-password'
-                            element={<SuccessChangePassword />}
-                        />
+
                         <Route path='/result/error' element={<ErrorRegister />} />
                         <Route path='/result/error-login' element={<ErrorLogin />} />
                         <Route path='/result/error-user-exist' element={<ErrorUserExist />} />
@@ -59,6 +56,10 @@ export const App = () => {
                             element={<ErrorChangePassword />}
                         />
                     </Route>
+                    <Route
+                            path=' /result/success-change-password'
+                            element={<SuccessChangePassword />}
+                        />
                 </Routes>
             </Router>
             {isLoading && <Loader />}

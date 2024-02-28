@@ -17,7 +17,14 @@ export const postCheckEmail = createAsyncThunk(
             })
             .catch((error) => {
 
-                    history.push('/result/error-change-password');
+                if (
+                    error.response.data.statusCode === 404 &&
+                    error.response.data.message === 'Email не найден'
+                ) {
+                    history.push('/result/error-check-email-no-exist');
+                } else {
+                    history.push('/result/error-check-email');
+                }
 
 
                 console.log(error.response.data);

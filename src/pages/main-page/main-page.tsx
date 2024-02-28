@@ -20,7 +20,7 @@ import {
     ProfileIconCard,
 } from '@components/customIcons/customIcons';
 import styles from './main-page.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { logOut, selectAuth } from '@redux/auth-slice';
 import { useAppDispatch } from '@redux/configure-store';
@@ -31,6 +31,7 @@ const { Meta } = Card;
 
 export const MainPage: React.FC = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [collapsed, setCollapsed] = useState(false);
     const [isMinScreen, setIsMinScreen] = useState(false);
     const dispatch = useAppDispatch();
@@ -39,6 +40,9 @@ export const MainPage: React.FC = () => {
     useEffect(() => {
         if (!localStorage.getItem('accessToken')) {
             navigate('/auth');
+        }
+        if(location.pathname === '/') {
+            navigate('/main');
         }
     }, [isAuth, navigate]);
 
