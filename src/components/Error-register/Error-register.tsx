@@ -23,7 +23,7 @@ export const ErrorRegister: React.FC = () => {
             <p className={styles.modalDescription}>
                 Что-то пошло не так и ваша регистрация не завершилась. Попробуйте ещё раз.
             </p>
-            <Button type='primary' size='middle' onClick={() => history.push('/auth/registration')}>
+            <Button data-test-id='registration-retry-button' type='primary' size='middle' onClick={() => history.push('/auth/registration')}>
                 Назад к регистрации
             </Button>
         </div>

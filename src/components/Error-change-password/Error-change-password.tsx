@@ -20,7 +20,7 @@ export const ErrorChangePassword: React.FC = () => {
             </div>
             <p className={styles.modalTitle}>Данные не сохранились</p>
             <p className={styles.modalDescription}>Что-то пошло не так. Попробуйте ещё раз</p>
-            <Button type='primary' size='middle'>
+            <Button data-test-id='change-retry-button' type='primary' size='middle'>
                 Повторить
             </Button>
         </div>

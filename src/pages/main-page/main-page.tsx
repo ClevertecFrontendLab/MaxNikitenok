@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import './main-page-antd-styles.css';
 import {
@@ -20,14 +20,27 @@ import {
     ProfileIconCard,
 } from '@components/customIcons/customIcons';
 import styles from './main-page.module.css';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { logOut, selectAuth } from '@redux/auth-slice';
+import { useAppDispatch } from '@redux/configure-store';
 
 const { Header, Sider, Content } = Layout;
 const { Title } = Typography;
 const { Meta } = Card;
 
 export const MainPage: React.FC = () => {
+    const navigate = useNavigate();
     const [collapsed, setCollapsed] = useState(false);
     const [isMinScreen, setIsMinScreen] = useState(false);
+    const dispatch = useAppDispatch();
+    const isAuth = useSelector(selectAuth);
+
+    useEffect(() => {
+        if (!localStorage.getItem('accessToken')) {
+            navigate('/auth');
+        }
+    }, [isAuth, navigate]);
 
     return (
         <div className={styles.wrapper}>
@@ -129,6 +142,7 @@ export const MainPage: React.FC = () => {
                                     borderTop: '1px solid var(--character-light-dividers)',
                                     paddingLeft: isMinScreen ? '28px' : '16px',
                                 },
+                                onClick: () => {dispatch(logOut())},
                             },
                         ]}
                     />

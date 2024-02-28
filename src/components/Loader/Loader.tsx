@@ -4,6 +4,7 @@ import loader from './loader.json';
 export const Loader = () => {
     return (
         <div
+            data-test-id='loader'
             style={{
                 background: 'rgba(121, 156, 212, 0.5)',
                 backdropFilter: 'blur(6px)',

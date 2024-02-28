@@ -2,10 +2,11 @@ import { useState } from 'react';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd';
 import './Enter-menu.css';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const EnterMenu: React.FC = () => {
-    const [current, setCurrent] = useState('/auth');
+    const location = useLocation();
+    const [current, setCurrent] = useState(location.pathname);
     const navigate = useNavigate();
 
     const items: MenuProps['items'] = [

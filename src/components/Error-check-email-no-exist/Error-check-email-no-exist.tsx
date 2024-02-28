@@ -1,5 +1,6 @@
 import { Button } from 'antd';
 import styles from './Error-check-email-no-exist.module.css';
+import { history } from '@redux/configure-store';
 
 export const ErrorCheckEmailNoExist: React.FC = () => {
     return (
@@ -18,12 +19,12 @@ export const ErrorCheckEmailNoExist: React.FC = () => {
                     />
                 </svg>
             </div>
-            <p className={styles.modalTitle}>Вход не выполнен</p>
+            <p className={styles.modalTitle}>Такой e-mail не зарегистрирован</p>
             <p className={styles.modalDescription}>
                 Мы не нашли в базе вашего e-mail. Попробуйте войти другим e-mail.
             </p>
-            <Button type='primary' size='middle'>
-                Мы не нашли в базе вашего e-mail. Попробуйте войти c другим e-mail.
+            <Button data-test-id='check-retry-button' type='primary' size='middle' onClick={()=>history.push('/auth')}>
+                Попробовать снова
             </Button>
         </div>
     );

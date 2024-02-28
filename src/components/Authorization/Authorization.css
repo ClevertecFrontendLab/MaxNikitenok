@@ -33,6 +33,10 @@
     border-left: 1px solid var(--character-light-border);
 }
 
+.authorization-form .ant-input-affix-wrapper .ant-input-suffix {
+    margin-right: 7px;
+}
+
 .authorization-form .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
     border-color: var(--primary-light-6);
     box-shadow: 0 0 0 2px var(--character-light-border);
@@ -117,11 +121,25 @@
 .authorization-form .ant-btn-primary:focus {
     border: 1px solid var(--primary-light-5);
     background: var(--primary-light-4);
-    
 }
 
 .authorization-form .ant-btn-primary:active {
     border: 1px solid var(--primary-light-7);
     background: var(--primary-light-7);
-    
+}
+
+.authorization-form .ant-form-item-control-input-content button.login-form-forgot {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    text-align: center;
+    color: var(--primary-light-6);
+    transform: translate(0, -8px);
+}
+
+.authorization-form
+    .ant-form-item-control-input-content
+    button.login-form-forgot.ant-btn[disabled] {
+    border-color: transparent;
+    background: transparent;
 }

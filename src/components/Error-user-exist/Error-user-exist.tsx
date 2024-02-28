@@ -23,7 +23,7 @@ export const ErrorUserExist: React.FC = () => {
             <p className={styles.modalDescription}>
                 Такой e-mail уже записан в системе. Попробуйте зарегистрироваться по другому e-mail.
             </p>
-            <Button type='primary' size='middle' onClick={() => history.push('/auth/registration')}>
+            <Button data-test-id='registration-back-button' type='primary' size='middle' onClick={() => history.push('/auth/registration')}>
                 Назад к регистрации
             </Button>
         </div>

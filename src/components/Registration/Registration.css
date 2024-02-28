@@ -12,6 +12,14 @@
     color: var(--character-light-title-85);
 }
 
+.ant-form-item-with-help .ant-form-item-explain {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 130%;
+    color: var(--character-light-secondary-45);
+}
+
 .registration-form .ant-form-item:nth-child(1) {
     margin: 8px 0 32px;
 }
@@ -36,6 +44,9 @@
     padding: 8px 11px;
     border-left: 1px solid var(--character-light-border);
 }
+
+.registration-form .ant-input-affix-wrapper .ant-input-suffix {
+margin-right: 7px;}
 
 .registration-form .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
     border-color: var(--primary-light-6);
@@ -89,11 +100,9 @@
 .registration-form .ant-btn-primary:focus {
     border: 1px solid var(--primary-light-5);
     background: var(--primary-light-4);
-    
 }
 
 .registration-form .ant-btn-primary:active {
     border: 1px solid var(--primary-light-7);
     background: var(--primary-light-7);
-    
 }

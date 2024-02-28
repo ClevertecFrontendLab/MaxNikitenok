@@ -21,7 +21,7 @@ export const ErrorLogin: React.FC = () => {
             </div>
             <p className={styles.modalTitle}>Вход не выполнен</p>
             <p className={styles.modalDescription}>Что-то пошло не так. Попробуйте еще раз</p>
-            <Button type='primary' size='middle' onClick={() => history.push('/auth')}>
+            <Button data-test-id='login-retry-button' type='primary' size='middle' onClick={() => history.push('/auth')}>
                 Повторить
             </Button>
         </div>

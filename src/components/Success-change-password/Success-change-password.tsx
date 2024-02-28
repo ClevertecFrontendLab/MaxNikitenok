@@ -1,8 +1,7 @@
 import { Button } from 'antd';
-import styles from './Success.module.css';
-import { history } from '@redux/configure-store';
+import styles from './Success-change-password.module.css';
 
-export const Success: React.FC = () => {
+export const SuccessChangePassword: React.FC = () => {
     return (
         <div className={styles.modalContent}>
             <div className={styles.image}>
@@ -21,15 +20,10 @@ export const Success: React.FC = () => {
             </div>
             <p className={styles.modalTitle}>Регистрация успешна</p>
             <p className={styles.modalDescription}>
-                Регистрация прошла успешно. Зайдите в приложение, используя свои e-mail и пароль.
+                Теперь можно войти в аккаунт, используя свой логин и новый пароль
             </p>
-            <Button
-                data-test-id='registration-enter-button'
-                type='primary'
-                size='middle'
-                onClick={() => history.push('/auth')}
-            >
-                Войти
+            <Button data-test-id='change-entry-button' type='primary' size='middle'>
+                Вход
             </Button>
         </div>
     );

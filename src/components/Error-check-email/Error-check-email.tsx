@@ -1,5 +1,6 @@
 import { Button } from 'antd';
 import styles from './Error-check-email.module.css';
+import { history } from '@redux/configure-store';
 
 export const ErrorCheckEmail: React.FC = () => {
     return (
@@ -403,7 +404,12 @@ export const ErrorCheckEmail: React.FC = () => {
             <p className={styles.modalDescription}>
                 Произошла ошибка, попробуйте отправить форму ещё раз.
             </p>
-            <Button type='primary' size='middle'>
+            <Button
+                data-test-id='check-back-button'
+                type='primary'
+                size='middle'
+                onClick={() => history.push('/auth')}
+            >
                 Назад
             </Button>
         </div>
