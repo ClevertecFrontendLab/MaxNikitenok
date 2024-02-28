@@ -1,8 +1,13 @@
 import { Button } from 'antd';
 import styles from './Error-register.module.css';
-import { history } from '@redux/configure-store';
+import { history, useAppDispatch } from '@redux/configure-store';
+import { postRegister } from '@redux/thunks/post-register';
+import { useSelector } from 'react-redux';
+import { selectRegisterData } from '@redux/auth-slice';
 
 export const ErrorRegister: React.FC = () => {
+    const registerData = useSelector(selectRegisterData)
+    const dispatch = useAppDispatch()
     return (
         <div className={styles.modalContent}>
             <div className={styles.image}>
@@ -23,7 +28,10 @@ export const ErrorRegister: React.FC = () => {
             <p className={styles.modalDescription}>
                 Что-то пошло не так и ваша регистрация не завершилась. Попробуйте ещё раз.
             </p>
-            <Button data-test-id='registration-retry-button' type='primary' size='middle' onClick={() => history.push('/auth/registration')}>
+            <Button data-test-id='registration-retry-button' type='primary' size='middle' onClick={() => {
+                history.push('/auth/registration');
+                dispatch(postRegister(registerData))
+                }}>
                 Назад к регистрации
             </Button>
         </div>

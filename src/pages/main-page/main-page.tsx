@@ -44,7 +44,7 @@ export const MainPage: React.FC = () => {
         if(location.pathname === '/') {
             navigate('/main');
         }
-    }, [isAuth, navigate]);
+    }, [isAuth, location.pathname, navigate]);
 
     return (
         <div className={styles.wrapper}>

@@ -2,13 +2,14 @@ import { Button, Form, Input } from 'antd';
 import styles from './Change-password.module.css';
 import { useAppDispatch } from '@redux/configure-store';
 import { postChangePassword } from '@redux/thunks/post-change-password';
+import { setChangePassData } from '@redux/auth-slice';
 
 export const ChangePassword: React.FC = () => {
     const dispatch = useAppDispatch();
     const regexp = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[^!@#$%^&*(){}_].{7,}/g;
     const onFinish = (values: { password: string; passwordRep: string }) => {
-        const data = { password: values.password,  confirmPassword: values.passwordRep};
-        console.log('Received values of form: ', values);
+        const data = { password: values.password, confirmPassword: values.passwordRep };
+        dispatch(setChangePassData(data));
         dispatch(postChangePassword(data));
     };
 
@@ -34,7 +35,7 @@ export const ChangePassword: React.FC = () => {
                     ]}
                 >
                     <Input.Password
-                        data-test-id='registration-password'
+                        data-test-id='change-password'
                         type='password'
                         placeholder='Password'
                     />
@@ -54,14 +55,14 @@ export const ChangePassword: React.FC = () => {
                     ]}
                 >
                     <Input.Password
-                        data-test-id='registration-confirm-password'
+                        data-test-id='change-confirm-password'
                         type='passwordRep'
                         placeholder='PasswordRep'
                     />
                 </Form.Item>
                 <Form.Item>
                     <Button
-                        data-test-id='change-entry-button'
+                        data-test-id='change-submit-button'
                         type='primary'
                         htmlType='submit'
                         className='login-form-button'

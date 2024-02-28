@@ -57,7 +57,7 @@ export const App = () => {
                         />
                     </Route>
                     <Route
-                            path=' /result/success-change-password'
+                            path='/result/success-change-password'
                             element={<SuccessChangePassword />}
                         />
                 </Routes>

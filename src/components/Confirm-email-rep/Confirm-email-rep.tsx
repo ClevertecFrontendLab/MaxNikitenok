@@ -1,21 +1,13 @@
-import styles from './Confirm-email.module.css';
+import styles from './Confirm-email-rep.module.css';
 import VerificationInput from 'react-verification-input';
 import { useAppDispatch } from '@redux/configure-store';
 import { postConfirmEmail } from '@redux/thunks/post-confirm-email';
 import { useSelector } from 'react-redux';
 import { selectEmail } from '@redux/auth-slice';
-import { useState } from 'react';
 
 export const ConfirmEmail: React.FC = () => {
     const userEmail = useSelector(selectEmail);
     const dispatch = useAppDispatch();
-
-const [value, setValue] = useState('')
-
-const editValueHandler = (value:string)=>{
-    setValue(value)
-}
-
     return (
         <div className={styles.wrapper}>
             <div className={styles.blur}>
@@ -35,7 +27,7 @@ const editValueHandler = (value:string)=>{
                         </svg>
                     </div>
                     <p className={styles.modalTitle}>
-                        Введите код
+                        Неверный код. Введите код
                         <br /> для восстановления аккауанта
                     </p>
                     <p className={styles.modalDescription}>
@@ -43,11 +35,9 @@ const editValueHandler = (value:string)=>{
                         Введите его в поле ниже.
                     </p>
                     <VerificationInput
-                    value={value}
-                        inputProps={{ 'data-test-id': 'verification-input' }}
+                        data-test-id='verification-input'
                         onComplete={(code) => {
                             dispatch(postConfirmEmail({ email: userEmail, code: String(code) }));
-                            editValueHandler('')
                         }}
                         placeholder=' '
                         validChars='0-9'
@@ -58,7 +48,6 @@ const editValueHandler = (value:string)=>{
                             characterSelected: styles.character__selected,
                             characterFilled: styles.character__filled,
                         }}
-                        onChange={(e)=>{editValueHandler(e)}}
                     />
                     <p className={styles.modalDescription__bottom}>
                         Не пришло письмо? Проверьте папку Спам.

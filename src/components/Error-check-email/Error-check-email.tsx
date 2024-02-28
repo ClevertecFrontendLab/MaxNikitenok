@@ -1,8 +1,15 @@
 import { Button } from 'antd';
 import styles from './Error-check-email.module.css';
-import { history } from '@redux/configure-store';
+import { history, useAppDispatch } from '@redux/configure-store';
+import { postCheckEmail } from '@redux/thunks/post-check-email';
+import { selectEmail } from '@redux/auth-slice';
+import { useSelector } from 'react-redux';
 
 export const ErrorCheckEmail: React.FC = () => {
+
+    const email = useSelector(selectEmail)
+
+    const dispatch = useAppDispatch()
     return (
         <div className={styles.modalContent}>
             <div className={styles.image}>
@@ -408,7 +415,10 @@ export const ErrorCheckEmail: React.FC = () => {
                 data-test-id='check-back-button'
                 type='primary'
                 size='middle'
-                onClick={() => history.push('/auth')}
+                onClick={() => {
+                    dispatch(postCheckEmail({email}))
+                    history.push('/auth')
+                }}
             >
                 Назад
             </Button>

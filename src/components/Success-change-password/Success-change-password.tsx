@@ -1,5 +1,6 @@
 import { Button } from 'antd';
 import styles from './Success-change-password.module.css';
+import { history } from '@redux/configure-store';
 
 export const SuccessChangePassword: React.FC = () => {
     return (
@@ -22,7 +23,14 @@ export const SuccessChangePassword: React.FC = () => {
             <p className={styles.modalDescription}>
                 Теперь можно войти в аккаунт, используя свой логин и новый пароль
             </p>
-            <Button data-test-id='change-entry-button' type='primary' size='middle'>
+            <Button
+                data-test-id='change-entry-button'
+                type='primary'
+                size='middle'
+                onClick={() => {
+                    history.push('/auth');
+                }}
+            >
                 Вход
             </Button>
         </div>

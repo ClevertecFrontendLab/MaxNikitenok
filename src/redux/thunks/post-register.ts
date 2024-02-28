@@ -16,13 +16,12 @@ export const postRegister = createAsyncThunk(
                 return res.data;
             })
             .catch((error) => {
-                if (error.response.data.statusCode === 409) {
+                if (error.response.status === 409) {
                     history.push('/result/error-user-exist');
                 } else {
                     history.push('/result/error');
                 }
 
-                console.log(error.response.data);
                 throw new Error(error.response.data.error);
             });
     },

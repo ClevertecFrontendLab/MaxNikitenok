@@ -16,19 +16,18 @@ export const Authorization: React.FC = () => {
 
     const onFinish = (values: { email: string; password: string; passwordRep: string }) => {
         const data = { email: values.email, password: values.password };
-        console.log('Received values of form: ', values);
         dispatch(postLogin(data));
-        onReset();
     };
 
     useEffect(() => {
-        if (localStorage.getItem('accessToken')) {
+        if (isAuth) {
             navigate('/main');
         }
     }, [isAuth, navigate]);
 
-    const regexp =
+    const emailRegexp =
         /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+    const passwordRegexp = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[^!@#$%^&*(){}_].{7,}/g;
 
     const [email, setEmail] = useState('');
     const [isPasswordValid, setIsPasswordValid] = useState(false);
@@ -36,18 +35,12 @@ export const Authorization: React.FC = () => {
     const handlePasswordChange = (e: { target: { value: string } }) => {
         const newEmail = e.target.value;
 
-        setIsPasswordValid(regexp.test(newEmail));
+        setIsPasswordValid(emailRegexp.test(newEmail));
         setEmail(newEmail);
     };
 
     const handleSubmit = () => {
         if (isPasswordValid) dispatch(postCheckEmail({ email }));
-    };
-
-    const [form] = Form.useForm();
-
-    const onReset = () => {
-        form.resetFields();
     };
 
     return (
@@ -75,11 +68,16 @@ export const Authorization: React.FC = () => {
                     />
                 </Form.Item>
                 <Form.Item
-                    data-test-id='login-password'
                     name='password'
-                    rules={[{ required: true, message: '' }]}
+                    rules={[
+                        { required: true, message: '' },
+                        {
+                            pattern: passwordRegexp,
+                            message: '',
+                        },
+                    ]}
                 >
-                    <Input.Password placeholder='Password' />
+                    <Input.Password data-test-id='login-password' placeholder='Password' />
                 </Form.Item>
                 <Form.Item>
                     <Form.Item name='remember' valuePropName='checked' noStyle>
@@ -88,7 +86,6 @@ export const Authorization: React.FC = () => {
 
                     <Button
                         onClick={handleSubmit}
-                        // disabled={!isPasswordValid}
                         style={{ border: 'none' }}
                         data-test-id='login-forgot-button'
                         className='login-form-forgot'

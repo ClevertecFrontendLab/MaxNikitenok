@@ -16,11 +16,10 @@ export const postLogin = createAsyncThunk(
                 return res.data;
             })
             .catch((error) => {
-                if (error.response.data.statusCode !== 200) {
+                if (error.response.status !== 200) {
                     history.push('/result/error-login');
                 }
 
-                console.log(error.response.data);
                 throw new Error(error.response.data.error);
             });
     },

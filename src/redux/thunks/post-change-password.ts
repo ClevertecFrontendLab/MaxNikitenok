@@ -18,7 +18,6 @@ export const postChangePassword = createAsyncThunk(
             .catch((error) => {
                 history.push('/result/error-change-password');
 
-                console.log(error.response.data);
                 throw new Error(error.response.data.error);
             });
     },

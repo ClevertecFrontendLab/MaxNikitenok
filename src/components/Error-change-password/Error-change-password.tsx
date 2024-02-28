@@ -1,7 +1,13 @@
 import { Button } from 'antd';
 import styles from './Error-change-password.module.css';
+import { history, useAppDispatch } from '@redux/configure-store';
+import { postChangePassword } from '@redux/thunks/post-change-password';
+import { useSelector } from 'react-redux';
+import { selectChangePassData } from '@redux/auth-slice';
 
 export const ErrorChangePassword: React.FC = () => {
+    const dispatch = useAppDispatch();
+    const changePassData = useSelector(selectChangePassData);
     return (
         <div className={styles.modalContent}>
             <div className={styles.image}>
@@ -20,7 +26,15 @@ export const ErrorChangePassword: React.FC = () => {
             </div>
             <p className={styles.modalTitle}>Данные не сохранились</p>
             <p className={styles.modalDescription}>Что-то пошло не так. Попробуйте ещё раз</p>
-            <Button data-test-id='change-retry-button' type='primary' size='middle'>
+            <Button
+                data-test-id='change-retry-button'
+                type='primary'
+                size='middle'
+                onClick={() => {
+                    dispatch(postChangePassword(changePassData));
+                    history.push('/auth/change-password');
+                }}
+            >
                 Повторить
             </Button>
         </div>

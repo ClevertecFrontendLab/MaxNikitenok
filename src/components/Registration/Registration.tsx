@@ -2,14 +2,16 @@ import { Button, Form, Input } from 'antd';
 import './Registration.css';
 import { postRegister } from '@redux/thunks/post-register';
 import { useAppDispatch } from '@redux/configure-store';
+import { setRegisterData } from '@redux/auth-slice';
 
 export const Registration: React.FC = () => {
     const dispatch = useAppDispatch();
 
+
     const onFinish = (values: { email: string; password: string; passwordRep: string }) => {
         const data = { email: values.email, password: values.password };
-        console.log('Received values of form: ', values);
         dispatch(postRegister(data));
+        dispatch(setRegisterData(data));
     };
 
     const regexp = /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[^!@#$%^&*(){}_].{7,}/g;
