@@ -143,3 +143,15 @@
     border-color: transparent;
     background: transparent;
 }
+
+@media screen and (max-width: 576px) {
+
+    .authorization-form .ant-form-item-control-input-content:nth-child(2) {
+        margin-bottom: 10px;
+    }
+
+    .authorization-form .ant-form-item-control-input-content button.login-form-forgot {
+        font-size: 14px;
+        transform: translate(8px, -8px);
+    }
+}

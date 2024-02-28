@@ -36,8 +36,8 @@ export const App = () => {
                     <Route path='/auth' element={<EnterPage />}>
                         <Route path='/auth' element={<Authorization />} />
                         <Route path='/auth/registration' element={<Registration />} />
-                        <Route path='/auth/change-password' element={<ChangePassword />} />
                     </Route>
+                    <Route path='/auth/change-password' element={<ChangePassword />} />
                     <Route path='/auth/confirm-email' element={<ConfirmEmail />} />
 
                     <Route path='/result' element={<ResultPage />}>
@@ -57,9 +57,9 @@ export const App = () => {
                         />
                     </Route>
                     <Route
-                            path='/result/success-change-password'
-                            element={<SuccessChangePassword />}
-                        />
+                        path='/result/success-change-password'
+                        element={<SuccessChangePassword />}
+                    />
                 </Routes>
             </Router>
             {isLoading && <Loader />}

@@ -31,3 +31,23 @@
     width: 309px;
     margin: 0 auto;
 }
+
+@media screen and (max-width: 576px) {
+    .container {
+        transform: translate(0,-8%);
+        padding: 18px 16px;
+        width: 328px;
+        height: 612px;
+
+    }
+
+    .logo {
+        width: 204px;
+
+    }
+
+    .logo svg {
+        width: 204px;
+   
+    }
+}

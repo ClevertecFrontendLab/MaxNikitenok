@@ -14,63 +14,71 @@ export const ChangePassword: React.FC = () => {
     };
 
     return (
-        <div className={styles.modalContent}>
-            <p className={styles.modalTitle}>Восстановление аккауанта</p>
-            <Form
-                autoComplete='off'
-                name='normal_login'
-                className='login-form registration-form'
-                initialValues={{ remember: true }}
-                onFinish={onFinish}
-            >
-                <Form.Item
-                    help='Пароль не менее 8 латинских букв с заглавной и цифрой'
-                    name='password'
-                    rules={[
-                        { required: true, message: '' },
-                        {
-                            pattern: regexp,
-                            message: 'Пароль не менее 8 латинских букв с заглавной и цифрой',
-                        },
-                    ]}
-                >
-                    <Input.Password
-                        data-test-id='change-password'
-                        type='password'
-                        placeholder='Password'
-                    />
-                </Form.Item>
-                <Form.Item
-                    name='passwordRep'
-                    rules={[
-                        { required: true, message: '' },
-                        ({ getFieldValue }) => ({
-                            validator(_, value) {
-                                if (!value || getFieldValue('password') === value) {
-                                    return Promise.resolve();
-                                }
-                                return Promise.reject('Пароли не совпадают');
-                            },
-                        }),
-                    ]}
-                >
-                    <Input.Password
-                        data-test-id='change-confirm-password'
-                        type='passwordRep'
-                        placeholder='PasswordRep'
-                    />
-                </Form.Item>
-                <Form.Item>
-                    <Button
-                        data-test-id='change-submit-button'
-                        type='primary'
-                        htmlType='submit'
-                        className='login-form-button'
+        <div className={styles.wrapper}>
+            <div className={styles.blur}>
+                <div className={styles.modalContent}>
+                    <p className={styles.modalTitle}>Восстановление аккауанта</p>
+                    <Form
+                        autoComplete='off'
+                        name='normal_login'
+                        className='login-form registration-form'
+                        initialValues={{ remember: true }}
+                        onFinish={onFinish}
                     >
-                        Сохранить
-                    </Button>
-                </Form.Item>
-            </Form>
+                        <Form.Item
+                        style={{marginBottom: 30, textAlign: 'left'}}
+                        className={styles.password_input}
+                            help='Пароль не менее 8 латинских букв с заглавной и цифрой'
+                            name='password'
+                            rules={[
+                                { required: true, message: '' },
+                                {
+                                    pattern: regexp,
+                                    message:
+                                        'Пароль не менее 8 латинских букв с заглавной и цифрой',
+                                },
+                            ]}
+                        >
+                            <Input.Password
+                                data-test-id='change-password'
+                                type='password'
+                                placeholder='Password'
+                            />
+                        </Form.Item>
+                        <Form.Item
+                        style={{marginBottom: 62}}
+                            name='passwordRep'
+                            rules={[
+                                { required: true, message: '' },
+                                ({ getFieldValue }) => ({
+                                    validator(_, value) {
+                                        if (!value || getFieldValue('password') === value) {
+                                            return Promise.resolve();
+                                        }
+                                        return Promise.reject('Пароли не совпадают');
+                                    },
+                                }),
+                            ]}
+                        >
+                            <Input.Password
+                                data-test-id='change-confirm-password'
+                                type='passwordRep'
+                                placeholder='PasswordRep'
+                            />
+                        </Form.Item>
+                        <Form.Item>
+                            <Button
+                                data-test-id='change-submit-button'
+                                type='primary'
+                                htmlType='submit'
+                                className='login-form-button'
+                            >
+                                Сохранить
+                            </Button>
+                        </Form.Item>
+                    </Form>
+                </div>
+            </div>
         </div>
     );
 };

@@ -1,14 +1,15 @@
 .modalContent {
     position: absolute;
     width: 539px;
-    height: 345px;
+    height: 550px;
     left: 50%;
-    top:50%;
+    top: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
+    align-items: center;
     text-align: center;
-    padding: 73px 86px 50px;
+    padding: 64px 50px 50px;
     font-family: var(--font-family);
     line-height: 130%;
     border-radius: 2px;
@@ -17,7 +18,7 @@
 }
 
 .image {
-    margin-bottom: 36px;
+    margin-bottom: 26px;
 }
 
 .modalTitle {
@@ -28,7 +29,7 @@
 }
 
 .modalDescription {
-    margin-bottom: 24px;
+    margin-bottom: 23px;
     font-weight: 400;
     font-size: 14px;
     color: var(--character-light-secondary-45);
@@ -40,4 +41,12 @@
     color: var(--character-light-primary-inverse);
     height: 40px;
     background-color: var(--primary-light-6);
+}
+
+@media screen and (max-width: 576px) {
+    .modalContent {
+        width: 328px;
+        height: 568px;
+        padding: 64px 30px 50px;
+    }
 }
